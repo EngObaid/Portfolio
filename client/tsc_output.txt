@@ -1,0 +1,5 @@
+src/pages/admin/Messages.tsx(4,64): error TS6133: 'ChevronRight' is declared but its value is never read.
+src/pages/admin/Messages.tsx(4,85): error TS6133: 'Star' is declared but its value is never read.
+src/pages/admin/Messages.tsx(4,91): error TS6133: 'MoreHorizontal' is declared but its value is never read.
+src/pages/admin/Messages.tsx(4,107): error TS6133: 'Inbox' is declared but its value is never read.
+src/pages/Projects.tsx(7,37): error TS6133: 'Badge' is declared but its value is never read.
