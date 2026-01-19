@@ -32,7 +32,7 @@ export default function BlogEditor() {
   const [submitting, setSubmitting] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
 
-  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [_coverImage, setCoverImage] = useState<File | null>(null);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [existingCover, setExistingCover] = useState<string | null>(null);
   const [draftFound, setDraftFound] = useState<{data: any, timestamp: string, coverPreview?: string} | null>(null);

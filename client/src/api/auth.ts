@@ -10,17 +10,24 @@ export interface AuthResponse {
   user: User;
 }
 
-export const login = async (email: string, password: string) => {
+// DTO mirroring what server actually returns in the 'data' field
+interface LoginApiResponse {
+  token: string;
+  _id: string;
+  email: string;
+}
+
+export const login = async (email: string, password: string): Promise<AuthResponse> => {
   // http interceptor unwraps response.data.data
-  // So 'data' here is { token, _id, email... }
-  const data = await http.post<any>("/api/auth/login", { email, password });
+  // We cast to unknown first because TS thinks it returns AxiosResponse
+  const data = await http.post<any>("/api/auth/login", { email, password }) as unknown as LoginApiResponse;
   
   const { token, ...userData } = data;
   return { token, user: userData as User };
 };
 
-export const getMe = async () => {
+export const getMe = async (): Promise<{ user: User }> => {
     // http interceptor unwraps response.data.data -> { _id, email }
-    const userData = await http.get<any>("/api/auth/me");
-    return { user: userData as User };
+    const userData = await http.get<any>("/api/auth/me") as unknown as User;
+    return { user: userData };
 }
